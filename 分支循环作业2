@@ -1,0 +1,82 @@
+#include <stdio.h>
+int main()
+{
+
+  int m = 0;
+  int n = 0;
+  int r = 0;
+  printf("请从大到小输入两个数:>");
+  scanf("%d%d", &m, &n);
+  while (m % n)
+  {
+    r = m % n;
+    m = n;
+    n = r;
+  }
+  printf("%d\n", n);
+  return 0;
+}
+// int main()
+// {
+//   int i = 1;
+//   while (i < 101)
+//   {
+//     printf("%d ", i);
+//     i *= 3;
+//   }
+//   return 0;
+// }
+// int main()
+// {
+//   int a = 0;
+//   int b = 0;
+//   int c = 0;
+//   int k;
+//   printf("请输入三个数:");
+//   scanf("%d%d%d", &a, &b, &c);
+//   int i;
+//   for (i = 0; i < 3; i++)
+//   {
+//     if (a > b)
+//     {
+//       if (c > b)
+//       {
+//         k = c;
+//         c = b;
+//         b = k;
+//       }
+//     }
+//     else
+//     {
+//       k = a;
+//       a = b;
+//       b = k;
+//       if (c > b)
+//       {
+//         k = c;
+//         c = b;
+//         b = k;
+//       }
+//     }
+//   }
+//   printf("%d%d%d", a, b, c);
+//   return 0;
+// }
+// int sum(int a)
+// {
+//   int c = 0;
+//   static int b = 3;
+//   c += 1;
+//   b += 2;
+//   return (a + b + c);
+// }
+// int main()
+// {
+//   int i;
+//   int a = 2;
+//   for (i = 0; i < 5; i++)
+//   {
+//     printf("%d,", sum(a));
+//   }
+//   return 0;
+// }
