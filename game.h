@@ -3,14 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define ROW 3
-#define COL 3
-void game();
+#define row 9
+#define col 9
+#define mine 10
 void menu();
-void csplate(char plate[ROW][COL], int row, int col);
-void dyplate(char plate[ROW][COL]);
-void player(char plate[ROW][COL], int row, int col);
-void computer(char plate[ROW][COL], int row, int col);
-char ifwin(char plate[ROW][COL], int row, int col);
-char iffull(char plate[ROW][COL], int row, int col);
+void game();
+void makemine(char arr[row][col], int rows, int cols);
+void showboard(char arr[row][col], int rows, int cols);
+void Initboard(char arr[row][col], int rows, int cols, char set);
 #endif
