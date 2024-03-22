@@ -1,0 +1,178 @@
+#include <stdio.h>
+int clac(unsigned int num)
+{
+  int count;
+  while (num != 0)
+  {
+    if (num % 2 == 1)
+    {
+      count++;
+    }
+    num >>= 1;
+  }
+  return count;
+}
+int main()
+{
+  int num;
+  scanf("%d", &num);
+  int count = clac(num);
+  printf("%d %d", num, count);
+}
+// #include <stdio.h>
+// void reverse(int arr[], int x)
+// {
+//   int i, tmp;
+//   for (i = 0; i < x; i++)
+//   {
+//     tmp = arr[i];
+//     arr[i] = arr[2 * x - i - 1];
+//     arr[2 * x - i - 1] = tmp;
+//   }
+// }
+// int main()
+// {
+//   int i;
+//   int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//   int len = sizeof(arr) / sizeof(arr[0]);
+//   reverse(arr, len / 2);
+//   for (i = 0; i < len; i++)
+//   {
+//     printf("%d ", arr[i]);
+//   }
+//   return 0;
+// }
+// #include <stdio.h>
+// void print(int *a, int len)
+// {
+//   int i;
+//   for (i = 0; i < len; i++)
+//   {
+//     printf("%d ", *a);
+//     *a++;
+//   }
+// }
+// int main()
+// {
+//   int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//   int len = sizeof(arr) / sizeof(arr[0]);
+//   print(arr, len);
+//   return 0;
+// }
+// #include <stdio.h>
+// void line(int *a, int len)
+// {
+//   int i;
+//   for (i = 0; i < len; i++)
+//   {
+//     *a = 0;
+//     *a++;
+//   }
+// }
+// int main()
+// {
+//   int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//   int len = sizeof(arr) / sizeof(arr[0]);
+//   line(arr, len);
+//   int i;
+//   for (i = 0; i < len; i++)
+//   {
+//     printf("%d ", arr[i]);
+//   }
+//   return 0;
+// }
+// #include <stdio.h>
+// int main()
+// {
+//   char input;
+//   int i, j, k;
+//   do
+//   {
+//     scanf("%c", &input);
+//   } while (input < 'A' || input > 'Z');
+//   char arr[7] = "       ";
+//   for (i = 0; i < 4; i++)
+//   {
+//     for (j = 3 - i; j <= 3 + i; j++)
+//     {
+//       arr[j] = input - 3 + i;
+//     }
+//     for (k = 0; k < 7; k++)
+//     {
+//       printf("%c", arr[k]);
+//     }
+//     printf("\n");
+//   }
+//   return 0;
+// }
+// #include <stdio.h>
+// #include <stdlib.h>
+// int main()
+// {
+//   int num = 0;
+//   int i;
+//   do
+//   {
+//     scanf("%d", &num);
+//     for (i = 0; i < 5; i++)
+//     {
+//       if (num % 10 != 0)
+//       {
+//         system("cls");
+//         printf("%d\n", i + 1);
+//       }
+//       num /= 10;
+//     }
+
+//   } while (num / 10000 < 10);
+//   return 0;
+// }
+// #include <stdio.h>
+// int makestrlen(char *str)
+// {
+//   if (*str != '\0')
+//   {
+//     return 1 + makestrlen(str + 1);
+//   }
+// }
+// int main()
+// {
+//   char arr[] = "bit";
+//   int len = makestrlen(arr);
+//   printf("%d\n", len);
+//   return 0;
+// }
+// #include <stdio.h>
+// int main()
+// {
+//   short s = 0;
+//   int a = 10;
+//   printf("%d\n", sizeof(s = a + 5));
+//   printf("%d", s);
+//   return 0;
+// }
+// int main()
+// {
+//   int num;
+//   scanf("%d", &num);
+//   int count;
+//   int i;
+//   for (i = 0; i < 32; i++)
+//   {
+//     if ((num >> i) & 1 == 1)
+//       count++;
+//   }
+//   printf("%d", count);
+//   return 0;
+// }
+// #include <stdio.h>
+// int main()
+// {
+//   int a = 3;
+//   int b = 5;
+//   a = a ^ b;
+//   b = a ^ b;
+//   a = a ^ b;
+//   printf("%d %d", a, b);
+//   return 0;
+// }
