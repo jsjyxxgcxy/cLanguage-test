@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+void jh(char *arr1, char *arr2)
+{
+  assert(arr2 != NULL);
+  while (*arr2 != '\0')
+  {
+    *arr1 = *arr2;
+    *arr1++;
+    *arr2++;
+  }
+  *arr1 = '\0';
+}
+int main()
+{
+  char arr1[] = "#######################";
+  char arr2[] = "bit";
+  // strcpy(arr1, arr2);
+  // printf("%s ", arr1);
+  // printf("%s\n", arr2);
+  jh(arr1, arr2);
+  printf("%s ", arr1);
+  printf("%s\n", arr2);
+  return 0;
+}
+// #include <stdio.h>
+// int main()
+// {
+//   int i = 0;
+//   unsigned long long a = 1;
+//   for (i = 0; i < 1000; i++)
+//   {
+//     a *= 7;
+//   }
+//   printf("%d", a % 47);
+//   return 0;
+// }
+// #include <stdio.h>
+// #include <stdlib.h>
+// int jc(int x)
+// {
+//   if (x == 1)
+//     return 1;
+//   else
+//     return x * jc(x - 1);
+// }
+// int main()
+// {
+//   int i = 0;
+//   int jg = 0;
+//   int num = 0;
+//   scanf("%d", &num);
+//   for (i = 1; i <= num; i++)
+//   {
+//     jg += jc(i);
+//   }
+//   printf("%d ", jg);
+//   return 0;
+// }
+// int main()
+// {
+//   int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//   int i;
+//   for (i = 0; i < 10; i++)
+//   {
+//     arr[i] = 0;
+//   }
+//   return 0;
+// }
+// int add(int x, int y)
+// {
+//   int c;
+//   c = x + y;
+//   return c;
+// }
+// int main()
+// {
+//   int a = 10;
+//   int b = 20;
+//   printf("%d ", add(a, b));
+//   return 0;
+// }
