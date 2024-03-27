@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main()
+{
+  unsigned int i;
+  for (i = 9; i >= 0; i--)
+  {
+    printf("%u\n", i);
+  }
+  return 0;
+}
+// int main()
+// {
+//   char a = 128;
+//   printf("%u ", a);
+//   return 0;
+// }
+// int check()
+// {
+//   int x = 1;
+//   return *(char *)&x;
+// }
+// int main()
+// {
+
+//   int ret = check();
+//   if (ret == 1)
+//     printf("小端");
+//   else
+//     printf("大端");
+//   return 0;
+// }
+// int main()
+// {
+//   int a = 1;
+//   char *p = (char *)&a;
+//   printf("%x ", *p);
+//   return 0;
+// }
