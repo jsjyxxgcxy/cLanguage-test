@@ -1,0 +1,133 @@
+// 模拟strcat函数
+#include <stdio.h>
+#include <assert.h>
+char *my_strcat(char *str1, const char *str2)
+{
+  assert(str1 && str2);
+  char *ret = str1;
+  // 找到目的字符串的'\0'
+  while (*str1++)
+    ;
+  str1--;
+  // 开始拼接
+  while (*str1++ = *str2++)
+    ;
+  return ret;
+}
+int main()
+{
+  char arr1[] = "hello";
+  char arr2[] = "bit";
+  my_strcat(arr1, arr2);
+  printf("%s\n", arr1);
+  return 0;
+}
+// 模拟strcpy函数
+// #include <stdio.h>
+// #include <assert.h>
+// char *my_strcpy(char *str1, const char *str2)
+// {
+//   assert(str1 != NULL);
+//   assert(str2 != NULL);
+//   char *ret = str1;
+//   // 返回目的字符串的起始地址
+//   while (*str1++ = *str2++)
+//     ;
+//   return ret;
+// }
+// int main()
+// {
+//   char arr1[] = "hello";
+//   char arr2[] = "bit";
+//   my_strcpy(arr1, arr2);
+//   printf("%s\n%s", arr1, arr2);
+//   return 0;
+// }
+// 三种模拟strlen函数
+// #include <stdio.h>
+// unsigned int my_strlen(char *str)
+// {
+//   char *p = str;
+//   while (*(str++))
+//     ;
+//   return str - p - 1;
+// }
+// int main()
+// {
+//   char arr[] = "abcdef";
+//   unsigned int ret = my_strlen(arr);
+//   printf("%u\n", ret);
+//   return 0;
+// }
+// #include <stdio.h>
+// unsigned int my_strlen(char *str)
+// {
+//   if (*str != '\0')
+//   {
+//     return 1 + my_strlen(++str);
+//   }
+//   else
+//     return 0;
+// }
+// int main()
+// {
+//   char arr[] = "abcdef";
+//   unsigned int ret = my_strlen(arr);
+//   printf("%u\n", ret);
+//   return 0;
+// }
+// #include <stdio.h>
+// unsigned int size_lenth(const char *a)
+// {
+//   unsigned int count = 0;
+//   while ((*a) != '\0')
+//   {
+//     count++;
+//     a++;
+//   }
+//   return count;
+// }
+// int main()
+// {
+//   unsigned int ret = size_lenth("abcdef");
+//   printf("%u\n", ret);
+//   return 0;
+// }
+// // 杨氏矩阵寻找一个数
+// #include <stdio.h>
+// int search(int arr[3][3], int k, int *a, int *b)
+// {
+//   int i = 0;
+//   while (*a <= 2 && *b >= 0)
+//   {
+//     if (arr[*a][*b] > k)
+//     {
+//       (*b)--;
+//     }
+//     else if (arr[*a][*b] < k)
+//     {
+//       (*a)++;
+//     }
+//     else
+//     {
+//       return 1;
+//     }
+//   }
+//   return 0;
+// }
+// int main()
+// {
+//   int arr[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+//   int sch = 7;
+//   int x = 0;
+//   int y = 2;
+//   int ret = search(arr, sch, &x, &y);
+//   if (ret == 1)
+//   {
+//     printf("yes\n");
+//     printf("下标为%d %d\n", x, y);
+//   }
+//   else
+//     printf("not\n");
+//   return 0;
+// }
