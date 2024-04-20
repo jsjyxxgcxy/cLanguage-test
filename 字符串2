@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <memory.h>
+#include <string.h>
+// 模拟memcpy函数
+void *my_memcpy(void *str1, const void *str2, unsigned int sz)
+{
+  void *ret = str1;
+  while (sz--)
+  {
+    *(char *)str1++ = *(char *)str2++;
+  }
+  return ret;
+}
+struct s
+{
+  char name[50];
+  int age;
+};
+int main()
+{
+  int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  my_memmove(arr + 5, arr, 20);
+  int i = 0;
+  for (i = 0; i < 10; i++)
+    printf("%d ", arr[i]);
+  // int arr1[] = {1, 2, 3, 4, 5};
+  // int arr2[5] = {0};
+  // my_memcpy(arr2, arr1, sizeof(arr1));
+  // struct s arr1[] = {{"张三", 18}, {"李四", 20}};
+  // struct s arr2[] = {0};
+  // my_memcpy(arr2, arr1, sizeof(arr1));
+  return 0;
+}
+// strtok函数
+//  #include <stdio.h>
+// #include <string.h>
+// int main()
+// {
+//   char arr[20] = "hello@b.i.t";
+//   char *p = "@.";
+//   char *ret;
+//   for (ret = strtok(arr, p); ret != NULL; ret = strtok(NULL, p))
+//   {
+//     printf("%s\n", ret);
+//   }
+//   return 0;
+// }
+// // 模拟strstr函数
+// #include <stdio.h>
+// #include <assert.h>
+// #include <string.h>
+// char *my_strstr(const char *str1, const char *str2)
+// {
+//   assert(str1 != NULL && str2 != NULL);
+//   char *start = (char *)str1;
+//   char *p1 = (char *)str1;
+//   char *p2 = (char *)str2;
+//   if (!*p2)
+//     return p1;
+//   while (*start)
+//   {
+//     p2 = (char *)str2;
+//     p1 = start;
+//     while (*p1 && *p2 && *p1 == *p2)
+//     {
+//       p1++;
+//       p2++;
+//     }
+//     if (*p2 == '\0')
+//     {
+//       return start; // 找到子串
+//     }
+//     start++;
+//   }
+//   return NULL; // 找不到子串
+// }
+// int main()
+// {
+//   char *arr = "abbbcdef";
+//   if (my_strstr(arr, "bbc") != NULL)
+//     printf("yes\n");
+//   else
+//     printf("not\n");
+//   printf("%s\n", my_strstr(arr, "bc"));
+//   return 0;
+// }
+// // 模拟strncmp函数
+// #include <stdio.h>
+// int my_strncmp(const char *arr1, const char *arr2, unsigned int n)
+// {
+//   while (n--)
+//   {
+//     if (*arr1++ != *arr2++)
+//       return *--arr1 - *--arr2;
+//   }
+//   return 0;
+// }
+// int main()
+// {
+//   const char *arr1 = "abcdef";
+//   const char *arr2 = "abcfeh";
+//   if (my_strncmp(arr1, arr2, 4) == 0)
+//     printf("相同\n");
+//   else
+//     printf("不同\n");
+
+//   return 0;
+// }
