@@ -1,0 +1,196 @@
+#include "contact.h"
+void menu()
+{
+  printf("****************************************************\n");
+  printf("***********1.add                  2.del   **********\n");
+  printf("***********3.search               4.modify**********\n");
+  printf("***********5.show                 6.sort  **********\n");
+  printf("***********0.exit                         **********\n");
+}
+int main()
+{
+  int input = 0;
+  // 创建通讯录
+  struct contact con;
+  // 通讯录初始化
+  InitContact(&con);
+  do
+  {
+    menu();
+    printf("请选择:>");
+    scanf("%d", &input);
+    switch (input)
+    {
+    case ADD:
+      AddContact(&con);
+      ShowContact(&con);
+      break;
+    case DEL:
+      DelContact(&con);
+      break;
+    case SEARCH:
+      SearchContact(&con);
+      break;
+    case MODIFY:
+      ModifyContact(&con);
+      break;
+    case SHOW:
+      ShowContact(&con);
+      break;
+    case SORT:
+      SortContact(&con);
+      ShowContact(&con);
+      break;
+    case EXIT:
+      printf("退出\n");
+      break;
+    default:
+      printf("输入错误\n");
+      break;
+    }
+  } while (input);
+
+  return 0;
+}
+
+// 初始化
+void InitContact(struct contact *ps)
+{
+  memset(ps->data, 0, sizeof(ps->data));
+  ps->size = 0;
+}
+
+// 展示
+void ShowContact(struct contact *ps)
+{
+  int i = 0;
+  printf("%-20s\t%-4s\t%-5s\t%-12s\t%-30s\n", "名字", "年龄", "性别", "电话", "住址");
+  for (i = 0; i < ps->size; i++)
+  {
+    printf("%-20s\t%-4d\t%-5s\t%-12s\t%-30s\n", ps->data[i].name, ps->data[i].age, ps->data[i].sex, ps->data[i].tele, ps->data[i].addr);
+  }
+}
+
+// 增加
+void AddContact(struct contact *ps)
+{
+  if (ps->size == MAX)
+    printf("通讯录已满\n");
+  else
+  {
+    printf("请输入名字:>");
+    scanf("%s", ps->data[ps->size].name);
+    printf("请输入年龄:>");
+    scanf("%d", &ps->data[ps->size].age);
+    printf("请输入性别:>");
+    scanf("%s", ps->data[ps->size].sex);
+    printf("请输入电话:>");
+    scanf("%s", ps->data[ps->size].tele);
+    printf("请输入地址:>");
+    scanf("%s", ps->data[ps->size].addr);
+    ps->size++;
+    printf("添加成功\n");
+  }
+}
+
+// 查找是否存在
+static int FindByName(struct contact *ps, char name[MAX_NAME])
+{
+  int i = 0;
+  for (i = 0; i < ps->size; i++)
+  {
+    if (strcmp(name, ps->data[i].name) == 0)
+    {
+      return i;
+    }
+  }
+  return -1;
+}
+
+// 删除
+void DelContact(struct contact *ps)
+{
+  char name[MAX_NAME] = {0};
+  printf("请输入要删除人的名字:>");
+  scanf("%s", name);
+
+  if (FindByName(ps, name) == -1)
+  {
+    printf("要删除的人不存在\n");
+  }
+  else
+  {
+    int j = 0;
+    for (j = FindByName(ps, name); j < ps->size - 1; j++)
+    {
+      ps->data[j] = ps->data[j + 1];
+    }
+    ps->size--;
+    printf("删除成功\n");
+  }
+}
+
+// 查找并打印
+void SearchContact(struct contact *ps)
+{
+  char name[MAX_NAME] = {0};
+  printf("请输入要查找的人的名字:>");
+  scanf("%s", name);
+  if (FindByName(ps, name) == -1)
+  {
+    printf("查找的人不存在\n");
+  }
+  else
+  {
+    int i = FindByName(ps, name);
+    printf("%-20s\t%-4s\t%-5s\t%-12s\t%-30s\n", "名字", "年龄", "性别", "电话", "住址");
+    printf("%-20s\t%-4d\t%-5s\t%-12s\t%-30s\n", ps->data[i].name, ps->data[i].age, ps->data[i].sex, ps->data[i].tele, ps->data[i].addr);
+  }
+}
+
+// 修改指定内容
+void ModifyContact(struct contact *ps)
+{
+  char name[MAX_NAME] = {0};
+  printf("请输入要查找的人的名字:>");
+  scanf("%s", name);
+  if (FindByName(ps, name) == -1)
+  {
+    printf("查找的人不存在\n");
+  }
+  else
+  {
+    int i = FindByName(ps, name);
+    printf("请输入名字:>");
+    scanf("%s", ps->data[i].name);
+    printf("请输入年龄:>");
+    scanf("%d", &ps->data[i].age);
+    printf("请输入性别:>");
+    scanf("%s", ps->data[i].sex);
+    printf("请输入电话:>");
+    scanf("%s", ps->data[i].tele);
+    printf("请输入地址:>");
+    scanf("%s", ps->data[i].addr);
+    printf("修改成功\n");
+  }
+}
+
+// 排序
+void SortContact(struct contact *ps)
+{
+  int i = 0;
+  for (i = 0; i < ps->size - 1; i++)
+  {
+    int j = 0;
+    for (j = i; j < ps->size - 1; j++)
+    {
+      if (ps->data[j].age > ps->data[j + 1].age)
+      {
+        struct PeoInfo p = ps->data[j];
+        ps->data[j] = ps->data[j + 1];
+        ps->data[j + 1] = p;
+      }
+    }
+  }
+  printf("排序完成\n");
+}
