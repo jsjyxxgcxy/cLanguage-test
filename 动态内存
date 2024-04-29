@@ -1,0 +1,62 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+char *getmemory()
+{
+  char p[] = "hello world";
+  return p;
+}
+void test()
+{
+  char *str = NULL;
+  str = getmemory(); // 返回后p指向的hello world没了
+  printf(str);
+}
+int main()
+{
+  test();
+  return 0;
+}
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// // 改正1
+// // void getmemory(char **p)
+// // {
+// //   *p = (char *)malloc(100);
+// // }
+// // void test()
+// // {
+// //   char *str = NULL;
+// //   getmemory(&str);
+// //   if (str != NULL)
+// //   {
+// //     strcpy(str, "hello world");
+// //     printf("%s", str);
+// //   }
+// //   free(str);
+// //   str = NULL;
+// // }
+// // 改正2
+// char *getmemory(char *p)
+// {
+//   p = (char *)malloc(100);
+//   return p;
+// }
+// void test()
+// {
+//   char *str = NULL;
+//   str = getmemory(str);
+//   if (str != NULL)
+//   {
+//     strcpy(str, "hello world");
+//     printf("%s", str);
+//   }
+//   free(str);
+//   str = NULL;
+// }
+// int main()
+// {
+//   test();
+//   return 0;
+// }
