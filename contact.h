@@ -3,8 +3,7 @@
 #include <stdio.h>
 #include <memory.h>
 #include <string.h>
-
-#define MAX 1000
+#include <stdlib.h>
 
 #define MAX_NAME 20
 #define MAX_SEX 5
@@ -32,11 +31,15 @@ enum Option
 // 通讯录类型
 struct contact
 {
-  struct PeoInfo data[MAX];
-  int size;
+  struct PeoInfo *data;
+  int size;     // 记录当前的通讯录人数
+  int capacity; // 记录当前通讯录的最大容纳
 };
 // 初始化
 void InitContact(struct contact *ps);
+
+// 检查是否容纳满
+void checkCapacity(struct contact *ps);
 
 // 增加
 void AddContact(struct contact *ps);
